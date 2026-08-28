@@ -1,0 +1,11 @@
+{
+  "name": "sdlc-governance-kit",
+  "displayName": "SDLC Governance Kit",
+  "description": "Governance skills and supporting controls for an AI-native software development lifecycle.",
+  "version": "0.1.0",
+  "author": {
+    "name": "liuhonghu2017",
+    "email": "liuhonghu2017@163.com"
+  },
+  "repository": "https://github.com/liuhonghu2017/sdlc-governance-kit"
+}
