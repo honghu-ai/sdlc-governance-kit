@@ -2,7 +2,7 @@
 
 > 原文　[The AI-Native SDLC playbook](https://claude.com/blog/the-ai-native-sdlc-playbook)
 >
-> 完整译文　[2026-08-译文-AiNativeSdlcPlaybook.md](2026-08-译文-AiNativeSdlcPlaybook.md)
+> 完整译文　[AiNativeSdlc-译文.md](AiNativeSdlc-译文.md)
 >
 > 本文只保留核心判断、产物循环、优先实践、采用顺序和待验证问题。原文细节与完整示例以译文为准。
 
@@ -206,7 +206,7 @@ flowchart LR
 
 ## 6. Skills Hub
 
-六步流程中的 Skills、输出、阶段产物和职责边界已移至 [skills-hub.md](skills-hub.md)。该 Hub 同时记录各阶段是否需要新增 Skill，以及哪些工作应交给斜杠命令、`CLAUDE.md`、`REVIEW.md`、Hook、CI 或操作手册。
+六步流程中的 Skills、输出、阶段产物和职责边界已移至 [AiNativeSdlc-skills-hub.md](AiNativeSdlc-skills-hub.md)。该 Hub 同时记录各阶段是否需要新增 Skill，以及哪些工作应交给斜杠命令、`CLAUDE.md`、`REVIEW.md`、Hook、CI 或操作手册。
 
 ## 7. 当前理解
 

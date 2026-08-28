@@ -1,6 +1,12 @@
 # Skill 目录
 
-## 1. 已实现：产物生成
+## 1. 已实现：治理基础设施
+
+### [`sdlc-scaffold`](../skills/sdlc-scaffold/SKILL.md)
+
+初始化、补齐或审计代码库级 SDLC 治理结构。输出是新增文件清单、未修改文件清单和结构检查结果。它不创建单项变更目录和阶段产物，重复运行不会覆盖团队已有内容。
+
+## 2. 已实现：产物生成
 
 ### [`capture-intent`](../skills/capture-intent/SKILL.md)
 
@@ -10,7 +16,7 @@
 
 读取已接受的 `intent.md`，加载适用政策 Skills，生成或校验完整的 `spec.md` 草稿。内容包括目标、范围、用户场景、功能需求、系统边界、非功能要求、政策约束、验收条件、风险和批准记录。
 
-## 2. 已实现：领域政策
+## 3. 已实现：领域政策
 
 ### [`brand-guidelines`](../skills/brand-guidelines/SKILL.md)
 
@@ -23,12 +29,6 @@
 ### [`security-policy`](../skills/security-policy/SKILL.md)
 
 根据系统边界、数据类型和权威安全政策，提供或审核身份授权、数据、密钥、依赖、网络、日志、供应链相关约束、威胁关注点、验收条件和升级事项。外部 API 专项检查仍交给 `secure-api-review`。
-
-## 3. 计划中：基础设施
-
-### `sdlc-scaffold`
-
-初始化或检查代码库级 SDLC 治理结构。输出是新增文件清单、未修改文件清单和结构检查结果。它不创建单项变更目录和阶段产物。
 
 ## 4. 计划中：领域政策与标准
 

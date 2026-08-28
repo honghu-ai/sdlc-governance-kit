@@ -1,10 +1,10 @@
 # AI 原生 SDLC 产物目录设计
 
-> 主笔记　[AI-native SDLC.md](AI-native%20SDLC.md)
+> 主笔记　[AiNativeSdlc-笔记.md](AiNativeSdlc-笔记.md)
 >
-> Skills Hub　[skills-hub.md](skills-hub.md)
+> Skills Hub　[AiNativeSdlc-skills-hub.md](AiNativeSdlc-skills-hub.md)
 >
-> 完整译文　[2026-08-译文-AiNativeSdlcPlaybook.md](2026-08-译文-AiNativeSdlcPlaybook.md)
+> 完整译文　[AiNativeSdlc-译文.md](AiNativeSdlc-译文.md)
 
 ## 1. 设计目标
 

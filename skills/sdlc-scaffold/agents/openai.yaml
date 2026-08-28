@@ -1,0 +1,4 @@
+interface:
+  display_name: "SDLC Scaffold"
+  short_description: "安全初始化或审计代码库级 SDLC 治理骨架与引用"
+  default_prompt: "使用 $sdlc-scaffold 为这个代码库补齐治理骨架，保留已有内容，并报告新增项、未修改项和结构问题。"

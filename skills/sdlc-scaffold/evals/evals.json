@@ -1,0 +1,58 @@
+{
+  "skill_name": "sdlc-scaffold",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "这是一个新代码库。请使用 sdlc-scaffold 初始化代码库级治理结构，但不要创建任何具体变更。",
+      "expected_output": "创建缺失的根目录治理文件、docs/sdlc 总索引和两个父级目录，列出新增项，并明确未创建 change ID 或阶段产物。",
+      "files": [],
+      "expectations": [
+        "创建 CLAUDE.md、REVIEW.md 和 docs/sdlc/00_Index.md。",
+        "创建 docs/sdlc/changes 和 docs/sdlc/incidents 父级目录。",
+        "使用 .gitkeep 使两个空父级目录能够进入版本控制。",
+        "不创建 changes/<change-id>、intent.md、spec.md、plan.md 或 incident.md。",
+        "未知的项目命令、架构和批准角色保持待团队填写，不凭常识编造。",
+        "输出新增文件、未修改文件和结构检查结果。"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "仓库已经有团队维护的 CLAUDE.md 和 REVIEW.md。请使用 sdlc-scaffold 补齐缺失结构，现有内容一个字也不要改。",
+      "expected_output": "保留已有治理文件，只创建缺失的 docs/sdlc 骨架，并在未修改清单中明确列出已有文件。",
+      "files": [],
+      "expectations": [
+        "初始化前读取并识别已有 CLAUDE.md 与 REVIEW.md。",
+        "不覆盖、不追加、不格式化已有治理文件。",
+        "只创建缺失的代码库级目录和总索引。",
+        "重复运行不改变首次运行后存在的任何文件。",
+        "不借补齐结构之名创建单项变更产物。"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "只审计这个仓库的 SDLC 结构。docs/sdlc/00_Index.md 链接到不存在的 changes/PROJ-9/00_Index.md，CLAUDE.md 没有测试命令。不要修复。",
+      "expected_output": "以只读方式报告失效引用和 CLAUDE.md 内容警告，提供证据路径，不修改任何文件。",
+      "files": [],
+      "expectations": [
+        "把失效的本地 Markdown 引用报告为错误。",
+        "把缺少测试命令报告为警告。",
+        "说明审计检查范围及错误和警告数量。",
+        "不创建、修改或删除任何文件。",
+        "不把结构检查通过与否表述为人工批准。"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "请使用 sdlc-scaffold 给这个需求分配 CHG-20260828-001，并直接创建 intent.md、spec.md 和 plan.md。",
+      "expected_output": "拒绝由脚手架分配 change ID 或创建阶段产物，并将意图文档创建路由到对应流程。",
+      "files": [],
+      "expectations": [
+        "明确 sdlc-scaffold 只负责代码库级治理骨架。",
+        "不分配或确认 CHG-20260828-001。",
+        "不创建单项变更目录、intent.md、spec.md 或 plan.md。",
+        "说明 intent.md 应由 capture-intent 与人工分流流程创建。",
+        "不因用户要求而越过产品负责人和工程师批准关卡。"
+      ]
+    }
+  ]
+}

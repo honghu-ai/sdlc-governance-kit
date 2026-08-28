@@ -6,7 +6,7 @@
 
 ## 当前状态
 
-仓库已提供从原始意图到规范编写及领域政策应用的首批五个 Skills：`capture-intent`、`compose-spec`、`brand-guidelines`、`compliance-policy` 和 `security-policy`。每个 Skill 都包含独立入口、界面元数据和评估用例；产物生成 Skills 另带 Markdown 模板。
+仓库已提供代码库治理脚手架，以及从原始意图到规范编写和领域政策应用的首批六个 Skills：`sdlc-scaffold`、`capture-intent`、`compose-spec`、`brand-guidelines`、`compliance-policy` 和 `security-policy`。每个 Skill 都包含独立入口、界面元数据和评估用例；脚手架与产物生成 Skills 另带所需模板。
 
 ## 治理目标
 
@@ -48,7 +48,7 @@ PR、评审发现与人工批准
 | `brand-guidelines` | 已实现 | 领域政策 | 提供或审核品牌约束、验收条件、违规与冲突 |
 | `compliance-policy` | 已实现 | 领域政策 | 提供或审核合规义务、证据、冲突与例外 |
 | `security-policy` | 已实现 | 领域政策 | 提供或审核通用安全约束、威胁关注点和验收条件 |
-| `sdlc-scaffold` | 计划中 | 治理基础设施 | 初始化并审计代码库级治理结构 |
+| `sdlc-scaffold` | 已实现 | 治理基础设施 | 初始化并审计代码库级治理结构 |
 | `ux-standards` | 计划中 | 领域标准 | 提供用户流程、界面状态和可访问性要求 |
 | `api-design-conventions` | 计划中 | 领域标准 | 约束 API 契约并检查实现兼容性 |
 | `secure-api-review` | 计划中 | 专项验证 | 检查外部 API 的认证、校验、审计和 PII 风险 |
@@ -62,8 +62,13 @@ sdlc-governance-kit/
 ├── docs/
 │   ├── 00_Index.md
 │   ├── 01_Architecture.md
-│   └── 02_SkillCatalog.md
+│   ├── 02_SkillCatalog.md
+│   ├── AiNativeSdlc-skills-hub.md
+│   ├── AiNativeSdlc-笔记.md
+│   ├── AiNativeSdlc-规范目录设计.md
+│   └── AiNativeSdlc-译文.md
 ├── skills/
+│   ├── sdlc-scaffold/
 │   ├── capture-intent/
 │   ├── compose-spec/
 │   ├── brand-guidelines/
@@ -74,14 +79,13 @@ sdlc-governance-kit/
 └── evals/
 ```
 
-Claude Code 插件要求 `plugin.json` 位于 `.claude-plugin/`，Skills 位于插件根目录下的 `skills/`。Skill 专用模板和评估用例与对应 Skill 放在一起；仓库级共享资源继续放在顶层目录。
+Claude Code 插件要求 `plugin.json` 位于 `.claude-plugin/`，Skills 位于插件根目录下的 `skills/`。Skill 专用模板、脚本和评估用例与对应 Skill 放在一起；仓库级共享资源继续放在顶层目录。
 
 ## 后续开发
 
-1. 实现 `sdlc-scaffold`，固定代码库级目录、模板和结构检查。
-2. 用现有五个 Skills 验证 `intent.md` 到 `spec.md` 及品牌、合规、安全领域输出的产物交接。
-3. 继续实现 UX、API 设计和 API 专项安全能力。
-4. 在 Skill 和治理配置变化时持续运行对应评估用例。
-5. 根据强制性要求补充 Hooks、CI 检查和人工批准关卡。
+1. 用现有六个 Skills 验证代码库初始化、`intent.md` 到 `spec.md` 及品牌、合规、安全领域输出的产物交接。
+2. 继续实现 UX、API 设计和 API 专项安全能力。
+3. 在 Skill 和治理配置变化时持续运行对应评估用例。
+4. 根据强制性要求补充 Hooks、CI 检查和人工批准关卡。
 
 详细设计从 [文档索引](docs/00_Index.md) 进入。

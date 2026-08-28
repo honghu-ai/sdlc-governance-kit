@@ -1,8 +1,8 @@
 # AI 原生 SDLC Skills Hub
 
-> 主笔记　[AI-native SDLC.md](AI-native%20SDLC.md)
+> 主笔记　[AiNativeSdlc-笔记.md](AiNativeSdlc-笔记.md)
 >
-> 完整译文　[2026-08-译文-AiNativeSdlcPlaybook.md](2026-08-译文-AiNativeSdlcPlaybook.md)
+> 完整译文　[AiNativeSdlc-译文.md](AiNativeSdlc-译文.md)
 >
 > 原文　[The AI-Native SDLC playbook](https://claude.com/blog/the-ai-native-sdlc-playbook)
 
