@@ -1,0 +1,4 @@
+interface:
+  display_name: "Compliance Policy"
+  short_description: "将权威合规义务转成可追溯的规范约束、证据和裁决事项"
+  default_prompt: "使用 $compliance-policy 根据提供的权威合规材料，为这份 spec.md 输出适用义务、验收证据、冲突和待合规负责人裁决的问题。"

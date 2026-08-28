@@ -1,3 +1,3 @@
 # Templates
 
-此目录用于存放代码库级治理文件和阶段产物的共享模板。模板将在对应 Skill 开发时加入。
+此目录用于存放代码库级治理文件和跨 Skill 共享模板。仅由单个 Skill 使用的模板放在 `skills/<skill-name>/assets/`，随 Skill 一起维护。

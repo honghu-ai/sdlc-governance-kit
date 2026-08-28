@@ -1,0 +1,4 @@
+interface:
+  display_name: "Brand Guidelines"
+  short_description: "为客户可见界面与文案提供可追溯的品牌约束和验收条件"
+  default_prompt: "使用 $brand-guidelines 根据提供的权威品牌材料，为这份 spec.md 输出适用约束、验收条件和待品牌负责人判断的问题。"

@@ -6,7 +6,7 @@
 
 ## 当前状态
 
-仓库已经完成初始骨架，Skills 暂未实现。后续将逐个定义 Skill 的触发条件、输入、输出、职责边界、脚本和评估用例。
+仓库已提供从原始意图到规范编写及领域政策应用的首批五个 Skills：`capture-intent`、`compose-spec`、`brand-guidelines`、`compliance-policy` 和 `security-policy`。每个 Skill 都包含独立入口、界面元数据和评估用例；产物生成 Skills 另带 Markdown 模板。
 
 ## 治理目标
 
@@ -39,19 +39,19 @@ PR、评审发现与人工批准
 
 阶段产物在流程真正发生时由对应能力创建。`capture-intent` 生成 `intent.md`，`compose-spec` 生成 `spec.md`，Claude Code 计划模式生成 `plan.md`。代码、测试、PR 和事故记录继续由各自的权威系统保存。
 
-## 计划中的 Skills
+## Skills
 
-| Skill | 类型 | 职责 |
-| --- | --- | --- |
-| `sdlc-scaffold` | 治理基础设施 | 初始化并审计代码库级治理结构 |
-| `capture-intent` | 产物生成 | 将想法、工单或事故发现整理成 `intent.md` |
-| `compose-spec` | 产物生成与校验 | 根据获批的 `intent.md` 生成或检查 `spec.md` |
-| `brand-guidelines` | 领域政策 | 提供品牌约束和验收条件 |
-| `compliance-policy` | 领域政策 | 提供合规义务、证据要求和人工裁决点 |
-| `ux-standards` | 领域标准 | 提供用户流程、界面状态和可访问性要求 |
-| `security-policy` | 领域政策 | 提供通用安全约束和安全验收条件 |
-| `api-design-conventions` | 领域标准 | 约束 API 契约并检查实现兼容性 |
-| `secure-api-review` | 专项验证 | 检查外部 API 的认证、校验、审计和 PII 风险 |
+| Skill | 状态 | 类型 | 职责 |
+| --- | --- | --- | --- |
+| `capture-intent` | 已实现 | 产物生成 | 将想法、工单或事故发现整理成 `intent.md` 草稿 |
+| `compose-spec` | 已实现 | 产物生成与校验 | 根据已接受的 `intent.md` 生成或检查 `spec.md` 草稿 |
+| `brand-guidelines` | 已实现 | 领域政策 | 提供或审核品牌约束、验收条件、违规与冲突 |
+| `compliance-policy` | 已实现 | 领域政策 | 提供或审核合规义务、证据、冲突与例外 |
+| `security-policy` | 已实现 | 领域政策 | 提供或审核通用安全约束、威胁关注点和验收条件 |
+| `sdlc-scaffold` | 计划中 | 治理基础设施 | 初始化并审计代码库级治理结构 |
+| `ux-standards` | 计划中 | 领域标准 | 提供用户流程、界面状态和可访问性要求 |
+| `api-design-conventions` | 计划中 | 领域标准 | 约束 API 契约并检查实现兼容性 |
+| `secure-api-review` | 计划中 | 专项验证 | 检查外部 API 的认证、校验、审计和 PII 风险 |
 
 ## 仓库结构
 
@@ -64,19 +64,24 @@ sdlc-governance-kit/
 │   ├── 01_Architecture.md
 │   └── 02_SkillCatalog.md
 ├── skills/
+│   ├── capture-intent/
+│   ├── compose-spec/
+│   ├── brand-guidelines/
+│   ├── compliance-policy/
+│   └── security-policy/
 ├── templates/
 ├── scripts/
 └── evals/
 ```
 
-Claude Code 插件要求 `plugin.json` 位于 `.claude-plugin/`，Skills 位于插件根目录下的 `skills/`。其余目录将在相关能力开始开发时补充实际内容。
+Claude Code 插件要求 `plugin.json` 位于 `.claude-plugin/`，Skills 位于插件根目录下的 `skills/`。Skill 专用模板和评估用例与对应 Skill 放在一起；仓库级共享资源继续放在顶层目录。
 
-## 开发顺序
+## 后续开发
 
 1. 实现 `sdlc-scaffold`，固定代码库级目录、模板和结构检查。
-2. 实现 `capture-intent` 与 `compose-spec`，打通前两个阶段的产物交接。
-3. 逐项实现品牌、合规、UX、安全和 API 领域能力。
-4. 为每个 Skill 增加评估用例，并在治理配置变化时持续运行。
+2. 用现有五个 Skills 验证 `intent.md` 到 `spec.md` 及品牌、合规、安全领域输出的产物交接。
+3. 继续实现 UX、API 设计和 API 专项安全能力。
+4. 在 Skill 和治理配置变化时持续运行对应评估用例。
 5. 根据强制性要求补充 Hooks、CI 检查和人工批准关卡。
 
 详细设计从 [文档索引](docs/00_Index.md) 进入。

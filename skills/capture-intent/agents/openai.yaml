@@ -1,0 +1,4 @@
+interface:
+  display_name: "Capture Intent"
+  short_description: "将想法、工单、缺陷或事故发现整理为可评审的意图文档草稿"
+  default_prompt: "使用 $capture-intent 将这些原始材料整理成 intent.md 草稿，并列出需要我确认的未决问题。"

@@ -1,16 +1,20 @@
 # 项目文档索引
 
-这里汇总 SDLC Governance Kit 的设计文档。Skills 尚未开始实现，当前文档用于固定项目范围和开发边界。
+这里汇总 SDLC Governance Kit 的设计文档。项目已实现意图捕获、规范编写及品牌、合规、通用安全三个领域政策 Skills；其余能力按目录中的状态继续演进。
 
 | 文档 | 内容 |
 | --- | --- |
 | [01_Architecture.md](01_Architecture.md) | 项目分层、产物循环和治理边界 |
-| [02_SkillCatalog.md](02_SkillCatalog.md) | 计划中的 Skills、触发阶段和预期输出 |
+| [02_SkillCatalog.md](02_SkillCatalog.md) | 已实现与计划中的 Skills、触发阶段和预期输出 |
+| [AiNativeSdlc-skills-hub.md](AiNativeSdlc-skills-hub.md) | 六步流程中的 Skill 职责、产物关系和能力边界 |
 
 ## 当前决定
 
 - 项目名称为 `sdlc-governance-kit`。
 - 项目按照 Claude Code 插件结构组织。
-- `skills/` 当前不包含任何 Skill 实现。
+- `skills/` 当前包含五个可加载的 Skill 实现。
 - 脚手架只处理代码库级结构，不创建单项变更或阶段产物。
-- 每个 Skill 单独设计、评审和开发。
+- `capture-intent` 生成 `intent.md` 草稿，`compose-spec` 生成或校验 `spec.md` 草稿。
+- `brand-guidelines`、`compliance-policy` 和 `security-policy` 只提供或审核各自领域内容，不拥有完整 `spec.md`。
+- 产品、政策和技术负责人保留人工审核与批准职责，Skill 输出不等于批准。
+- 每个 Skill 单独设计、评审、评估和演进。

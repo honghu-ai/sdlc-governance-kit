@@ -1,0 +1,5 @@
+interface:
+  display_name: "Compose Spec"
+  short_description: "根据已接受意图生成或校验可评审的需求与高层设计规范"
+  default_prompt: "使用 $compose-spec 读取已接受的 intent.md 和适用政策材料，生成完整的 spec.md 草稿并列出未决问题。"
+

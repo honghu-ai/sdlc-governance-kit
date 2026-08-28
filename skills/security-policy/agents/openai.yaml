@@ -1,0 +1,4 @@
+interface:
+  display_name: "Security Policy"
+  short_description: "把通用安全政策转成可追溯的规范约束、威胁关注点和验收证据"
+  default_prompt: "使用 $security-policy 根据系统边界、数据类型和权威安全政策，为这份 spec.md 输出安全约束、验收条件和待安全负责人判断的问题。"
