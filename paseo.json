@@ -2,6 +2,9 @@
   "metadataGeneration": {
     "title": {
       "instructions": "始终使用简体中文生成简短、清晰的任务标题，必要的技术术语保留英文。"
+    },
+    "commitMessage": {
+      "instructions": "请根据代码变更生成中文 Git Commit Message。格式：<type>(<scope>): <subject>\n\n<body>\n\n<footer>。type 仅限 feat、fix、docs、style、refactor、test、chore；scope 根据修改模块选择；subject 使用祈使句，不超过50字，不以句号结尾；Body 可选，说明做了什么及原因；Footer 可选，关联 Issue 或 Breaking Change；避免模糊描述，保持简洁、具体。"
     }
   }
 }
