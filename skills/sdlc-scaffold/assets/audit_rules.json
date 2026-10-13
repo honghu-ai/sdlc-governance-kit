@@ -1,0 +1,79 @@
+{
+  "required_content": {
+    "CLAUDE.md": [
+      {
+        "pattern": "^#{1,6}\\s+.*命令",
+        "message": "缺少命令章节"
+      },
+      {
+        "pattern": "(构建|build)",
+        "message": "未记录构建命令"
+      },
+      {
+        "pattern": "(测试|test)",
+        "message": "未记录测试命令"
+      },
+      {
+        "pattern": "(lint|静态检查)",
+        "message": "未记录 lint 命令"
+      },
+      {
+        "pattern": "(健康输出|成功输出)",
+        "message": "未记录健康输出示例"
+      },
+      {
+        "pattern": "^#{1,6}\\s+.*约定",
+        "message": "缺少关键约定章节"
+      },
+      {
+        "pattern": "^#{1,6}\\s+.*架构",
+        "message": "缺少架构边界章节"
+      },
+      {
+        "pattern": "(容易出错|常见错误|重复错误)",
+        "message": "未记录智能体重复错误"
+      }
+    ],
+    "REVIEW.md": [
+      {
+        "pattern": "评审轮次",
+        "message": "缺少评审轮次"
+      },
+      {
+        "pattern": "important",
+        "message": "缺少 Important 定义"
+      },
+      {
+        "pattern": "\\bnit\\b",
+        "message": "缺少 Nit 定义"
+      },
+      {
+        "pattern": "(不要报告|忽略项|排除)",
+        "message": "缺少忽略项"
+      },
+      {
+        "pattern": "(人工批准|人工阈值|代码负责人)",
+        "message": "缺少人工批准边界"
+      }
+    ],
+    "docs/sdlc/00_Index.md": [
+      {
+        "pattern": "活动变更",
+        "message": "缺少活动变更索引"
+      },
+      {
+        "pattern": "近期完成",
+        "message": "缺少近期完成索引"
+      },
+      {
+        "pattern": "(近期事故|事故)",
+        "message": "缺少事故索引"
+      }
+    ]
+  },
+  "placeholders": [
+    "待团队填写",
+    "[项目名称]"
+  ],
+  "placeholder_message": "仍含待团队确认的占位内容"
+}

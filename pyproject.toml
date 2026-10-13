@@ -1,0 +1,20 @@
+[project]
+name = "sdlc-governance-kit"
+version = "0.3.0"
+description = "AI 原生 SDLC 治理 Skills 与检查脚本"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.5", "pyyaml>=6"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["tests"]

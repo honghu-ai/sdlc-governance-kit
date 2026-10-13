@@ -1,0 +1,4 @@
+interface:
+  display_name: "Secure API Review"
+  short_description: "对外部 API 做认证、授权、校验、审计和 PII 的专项安全检查"
+  default_prompt: "使用 $secure-api-review 检查这份 OpenAPI 契约和 spec.md 中的外部接口，按严重程度列出认证、授权、输入校验、审计和 PII 问题及对应安全要求。"

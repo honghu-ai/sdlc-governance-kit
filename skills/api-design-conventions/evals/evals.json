@@ -1,0 +1,40 @@
+{
+  "skill_name": "api-design-conventions",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "组织 API 规范 v2 要求字段使用 snake_case、错误统一为 {code, message, details}、集合接口使用游标分页且 limit 上限 100。新 OpenAPI 把 user_name 改名为 userName，并新增 GET /orders 不带分页。请使用 api-design-conventions 审核。",
+      "expected_output": "识别重命名为破坏性变更、违反命名规范，以及缺少游标分页。",
+      "files": [],
+      "expectations": [
+        "指出 user_name 改为 userName 既违反 snake_case 又是破坏性变更。",
+        "指出 GET /orders 缺少游标分页和 limit 上限。",
+        "每项问题引用规范 v2 的对应条目并说明对调用方的影响。",
+        "给出迁移或兼容建议，而不是直接替负责人批准破坏性变更。"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "请用 api-design-conventions 顺便检查这个接口有没有 SQL 注入和越权问题。",
+      "expected_output": "说明安全专项不在本 Skill 范围，路由给 secure-api-review。",
+      "files": [],
+      "expectations": [
+        "说明注入与越权检查属于 secure-api-review。",
+        "不输出安全结论。",
+        "仍可就契约设计问题给出意见或说明需要的输入。"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "intent.md 要求给合作方开放查询发票接口。我们没有 API 规范文件，请用 api-design-conventions 为 spec.md 写契约约束。",
+      "expected_output": "在缺少组织规范时给出标注为非组织规范的建议，并覆盖错误格式、分页、版本等维度。",
+      "files": [],
+      "expectations": [
+        "建议明确标为“建议（非组织规范）”。",
+        "覆盖路径命名、错误格式、分页、版本与兼容性。",
+        "把缺失的组织规范与 API 负责人列为待确认。",
+        "不编写实现代码或选择框架。"
+      ]
+    }
+  ]
+}

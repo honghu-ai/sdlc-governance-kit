@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: 安装依赖
+        run: pip install ruff pytest pyyaml
+      - name: 校验 JSON
+        run: |
+          find . -name '*.json' -not -path './.git/*' -print0 | xargs -0 -n1 python -m json.tool > /dev/null
+      - name: 校验 YAML
+        run: |
+          python - <<'PY'
+          import pathlib, sys, yaml
+          bad = 0
+          for p in pathlib.Path(".").rglob("*.y*ml"):
+              if ".git" in p.parts:
+                  continue
+              try:
+                  yaml.safe_load(p.read_text(encoding="utf-8"))
+              except yaml.YAMLError as exc:
+                  bad += 1
+                  print(f"ERROR {p}: {exc}")
+          sys.exit(1 if bad else 0)
+          PY
+      - name: Skill 结构与 frontmatter 检查
+        run: python scripts/check_skills.py
+      - name: 评估用例校验
+        run: python scripts/run_evals.py list
+      - name: Ruff
+        run: |
+          ruff check .
+          ruff format --check .
+      - name: Pytest
+        run: pytest -q
