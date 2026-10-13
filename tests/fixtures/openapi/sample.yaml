@@ -1,0 +1,31 @@
+openapi: 3.0.3
+info: {title: sample, version: "1"}
+paths:
+  /users:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {$ref: "#/components/schemas/User"}
+  /users/{id}:
+    get:
+      security: [{bearer: []}]
+      parameters:
+        - {name: id, in: path, required: true, schema: {type: string, format: uuid}}
+      responses:
+        "200":
+          content:
+            application/json:
+              schema: {$ref: "#/components/schemas/User"}
+        "401": {description: unauthorized}
+        "403": {description: forbidden}
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id: {type: string, format: uuid}
+        email: {type: string, format: email}

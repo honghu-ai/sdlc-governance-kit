@@ -30,21 +30,21 @@
 
 根据系统边界、数据类型和权威安全政策，提供或审核身份授权、数据、密钥、依赖、网络、日志、供应链相关约束、威胁关注点、验收条件和升级事项。外部 API 专项检查仍交给 `secure-api-review`。
 
-## 4. 计划中：领域政策与标准
+## 4. 已实现：领域标准
 
-### `ux-standards`
+### [`ux-standards`](../skills/ux-standards/SKILL.md)
 
-输出用户流程、界面状态、可访问性检查项和体验验收条件。
+根据权威 UX 标准、设计系统与可访问性要求，输出用户流程、界面状态清单、可访问性检查项和体验验收条件。缺少权威材料时只给出标注为非组织标准的建议，不替设计负责人批准。
 
-### `api-design-conventions`
+### [`api-design-conventions`](../skills/api-design-conventions/SKILL.md)
 
-输出 API 契约约束和设计检查结果，覆盖路径、字段、版本、Schema、分页、错误格式和兼容性。
+输出 API 契约约束和设计检查结果，覆盖路径、字段、版本、Schema、分页、错误格式、幂等和兼容性，并识别破坏性变更。安全专项交给 `secure-api-review`。
 
-## 5. 计划中：专项验证
+## 5. 已实现：专项验证
 
-### `secure-api-review`
+### [`secure-api-review`](../skills/secure-api-review/SKILL.md)
 
-输出 API 安全要求、按严重程度排列的问题和检查脚本结果，覆盖身份认证、输入校验、审计事件和 PII。
+输出 API 安全要求、按严重程度排列的问题和检查脚本结果，覆盖身份认证、对象级授权、输入校验、资源限制、审计事件和 PII。`scripts/check_openapi.py` 对 OpenAPI 契约做确定性预检，结果需人工复核。
 
 ## 6. 共同要求
 

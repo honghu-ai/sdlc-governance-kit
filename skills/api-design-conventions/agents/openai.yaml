@@ -1,0 +1,4 @@
+interface:
+  display_name: "API Design Conventions"
+  short_description: "按组织 API 规范约束接口契约并检查向后兼容性"
+  default_prompt: "使用 $api-design-conventions 对照组织 API 设计规范，检查这份 spec.md 与 OpenAPI 契约的命名、错误格式、分页、版本和兼容性问题。"

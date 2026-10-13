@@ -1,0 +1,4 @@
+interface:
+  display_name: "UX Standards"
+  short_description: "把 UX 标准与可访问性要求转成规范中的用户流程、界面状态和验收条件"
+  default_prompt: "使用 $ux-standards 根据原型和组织 UX 标准，为这份 spec.md 补充用户流程、界面状态清单、可访问性验收条件和待设计负责人决定的问题。"
