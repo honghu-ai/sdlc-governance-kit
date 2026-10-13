@@ -109,3 +109,8 @@ def test_complete_repo_passes(scaffold, tmp_path):
         dst = tmp_path / src.relative_to(fixture)
         dst.write_text(src.read_text(encoding="utf-8"), encoding="utf-8")
     assert scaffold.audit(tmp_path) == []
+
+
+def test_example_repo_passes_audit(scaffold):
+    example = Path(__file__).resolve().parent.parent / "examples" / "intent-to-spec"
+    assert scaffold.audit(example) == []
