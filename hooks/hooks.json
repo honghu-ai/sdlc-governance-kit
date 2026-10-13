@@ -1,0 +1,17 @@
+{
+  "description": "编辑治理文件后运行 sdlc-scaffold 只读审计",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/audit_on_edit.py\"",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}
