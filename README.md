@@ -63,10 +63,7 @@ sdlc-governance-kit/
 │   ├── 00_Index.md
 │   ├── 01_Architecture.md
 │   ├── 02_SkillCatalog.md
-│   ├── AiNativeSdlc-skills-hub.md
-│   ├── AiNativeSdlc-笔记.md
-│   ├── AiNativeSdlc-规范目录设计.md
-│   └── AiNativeSdlc-译文.md
+│   └── notes/          # 研究笔记与译文（非正式设计文档）
 ├── skills/
 │   ├── sdlc-scaffold/
 │   ├── capture-intent/

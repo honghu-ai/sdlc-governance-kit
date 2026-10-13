@@ -6,10 +6,10 @@
 | --- | --- |
 | [01_Architecture.md](01_Architecture.md) | 项目分层、产物循环和治理边界 |
 | [02_SkillCatalog.md](02_SkillCatalog.md) | 已实现与计划中的 Skills、触发阶段和预期输出 |
-| [AiNativeSdlc-skills-hub.md](AiNativeSdlc-skills-hub.md) | 六步流程中的 Skill 职责、产物关系和能力边界 |
-| [AiNativeSdlc-笔记.md](AiNativeSdlc-笔记.md) | AI 原生 SDLC 的核心判断、优先实践、采用顺序和待验证问题 |
-| [AiNativeSdlc-规范目录设计.md](AiNativeSdlc-规范目录设计.md) | 按变更聚合的产物目录、索引、命名和元数据约定 |
-| [AiNativeSdlc-译文.md](AiNativeSdlc-译文.md) | 《The AI-Native SDLC playbook》中文译文 |
+| [AiNativeSdlc-skills-hub.md](notes/AiNativeSdlc-skills-hub.md) | 六步流程中的 Skill 职责、产物关系和能力边界 |
+| [AiNativeSdlc-笔记.md](notes/AiNativeSdlc-笔记.md) | AI 原生 SDLC 的核心判断、优先实践、采用顺序和待验证问题 |
+| [AiNativeSdlc-规范目录设计.md](notes/AiNativeSdlc-规范目录设计.md) | 按变更聚合的产物目录、索引、命名和元数据约定 |
+| [AiNativeSdlc-译文.md](notes/AiNativeSdlc-译文.md) | 《The AI-Native SDLC playbook》中文译文 |
 
 ## 当前决定
 
