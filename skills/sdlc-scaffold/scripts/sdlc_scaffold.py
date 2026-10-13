@@ -4,12 +4,12 @@
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import shutil
 import sys
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
-
 
 SKILL_ROOT = Path(__file__).resolve().parent.parent
 ASSET_ROOT = SKILL_ROOT / "assets"
@@ -26,6 +26,7 @@ TRACKING_FILES = (
     Path("docs/sdlc/changes/.gitkeep"),
     Path("docs/sdlc/incidents/.gitkeep"),
 )
+DEFAULT_RULES = ASSET_ROOT / "audit_rules.json"
 LINK_PATTERN = re.compile(r"!?(?:\[[^\]]*\])\(([^)]+)\)")
 
 
@@ -37,42 +38,27 @@ def has_pattern(text: str, pattern: str) -> bool:
     return re.search(pattern, text, flags=re.IGNORECASE | re.MULTILINE) is not None
 
 
-def check_required_content(root: Path, findings: list[tuple[str, Path, str]]) -> None:
-    checks = {
-        Path("CLAUDE.md"): (
-            (r"^#{1,6}\s+.*命令", "缺少命令章节"),
-            (r"(构建|build)", "未记录构建命令"),
-            (r"(测试|test)", "未记录测试命令"),
-            (r"(lint|静态检查)", "未记录 lint 命令"),
-            (r"(健康输出|成功输出)", "未记录健康输出示例"),
-            (r"^#{1,6}\s+.*约定", "缺少关键约定章节"),
-            (r"^#{1,6}\s+.*架构", "缺少架构边界章节"),
-            (r"(容易出错|常见错误|重复错误)", "未记录智能体重复错误"),
-        ),
-        Path("REVIEW.md"): (
-            (r"评审轮次", "缺少评审轮次"),
-            (r"important", "缺少 Important 定义"),
-            (r"\bnit\b", "缺少 Nit 定义"),
-            (r"(不要报告|忽略项|排除)", "缺少忽略项"),
-            (r"(人工批准|人工阈值|代码负责人)", "缺少人工批准边界"),
-        ),
-        Path("docs/sdlc/00_Index.md"): (
-            (r"活动变更", "缺少活动变更索引"),
-            (r"近期完成", "缺少近期完成索引"),
-            (r"(近期事故|事故)", "缺少事故索引"),
-        ),
-    }
+def load_rules(rules_path: Path = DEFAULT_RULES) -> dict:
+    """Load content audit rules from a JSON config file."""
+    return json.loads(rules_path.read_text(encoding="utf-8"))
 
-    for relative_path, rules in checks.items():
+
+def check_required_content(root: Path, findings: list[tuple[str, Path, str]], rules: dict | None = None) -> None:
+    rules = rules if rules is not None else load_rules()
+    placeholders = rules.get("placeholders", [])
+    placeholder_message = rules.get("placeholder_message", "仍含占位内容")
+
+    for relative_text, file_rules in rules.get("required_content", {}).items():
+        relative_path = Path(relative_text)
         file_path = root / relative_path
         if not file_path.is_file():
             continue
         text = file_path.read_text(encoding="utf-8")
-        for pattern, message in rules:
-            if not has_pattern(text, pattern):
-                add_finding(findings, "WARN", relative_path, message)
-        if "待团队填写" in text or "[项目名称]" in text:
-            add_finding(findings, "WARN", relative_path, "仍含待团队确认的占位内容")
+        for rule in file_rules:
+            if not has_pattern(text, rule["pattern"]):
+                add_finding(findings, "WARN", relative_path, rule["message"])
+        if any(marker in text for marker in placeholders):
+            add_finding(findings, "WARN", relative_path, placeholder_message)
 
 
 def local_link_target(markdown_file: Path, raw_target: str) -> Path | None:
@@ -144,7 +130,7 @@ def check_item_directories(root: Path, findings: list[tuple[str, Path, str]]) ->
                 )
 
 
-def audit(root: Path) -> list[tuple[str, Path, str]]:
+def audit(root: Path, rules: dict | None = None) -> list[tuple[str, Path, str]]:
     findings: list[tuple[str, Path, str]] = []
     for relative_path in CORE_DIRECTORIES:
         directory = root / relative_path
@@ -156,7 +142,7 @@ def audit(root: Path) -> list[tuple[str, Path, str]]:
         if not (root / relative_path).is_file():
             add_finding(findings, "ERROR", relative_path, "缺少核心文件")
 
-    check_required_content(root, findings)
+    check_required_content(root, findings, rules)
     check_links(root, findings)
     check_item_directories(root, findings)
     return findings
@@ -220,15 +206,21 @@ def initialize(root: Path) -> None:
         print("- 无")
 
 
-def parse_args() -> argparse.Namespace:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("mode", choices=("init", "audit"), help="初始化或只读审计")
     parser.add_argument("--target", type=Path, default=Path.cwd(), help="目标代码库，默认为当前目录")
-    return parser.parse_args()
+    parser.add_argument(
+        "--rules",
+        type=Path,
+        default=DEFAULT_RULES,
+        help="内容审计规则 JSON，默认为 assets/audit_rules.json",
+    )
+    return parser.parse_args(argv)
 
 
-def main() -> int:
-    args = parse_args()
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(argv)
     root = args.target.expanduser().resolve()
     if not root.is_dir():
         print(f"ERROR {root}：目标代码库不存在或不是目录。", file=sys.stderr)
@@ -237,7 +229,7 @@ def main() -> int:
     if args.mode == "init":
         initialize(root)
         print("结构检查：")
-    findings = audit(root)
+    findings = audit(root, load_rules(args.rules))
     print_findings(findings)
     return 1 if any(level == "ERROR" for level, _, _ in findings) else 0
 
